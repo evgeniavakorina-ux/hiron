@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Хирон в натальной карте — где живёт твоё «я недостаточна»</title>
+<meta name="description" content="Узнай, в каком доме стоит твой Хирон — и как это напрямую блокирует деньги, проявленность и ощущение собственной ценности.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0c14;
+    --surface: #16121f;
+    --surface-2: #1e1829;
+    --border: rgba(180,160,255,0.12);
+    --border-hover: rgba(180,160,255,0.25);
+    --text: #f0ecff;
+    --text-muted: #9b90b8;
+    --text-dim: #5e547a;
+    --accent: #b89cff;
+    --accent-dim: rgba(184,156,255,0.12);
+    --accent-glow: rgba(184,156,255,0.06);
+    --gold: #e8c97a;
+    --gold-dim: rgba(232,201,122,0.12);
+    --green: #7ecba8;
+    --green-dim: rgba(126,203,168,0.12);
+    --coral: #f4907a;
+    --coral-dim: rgba(244,144,122,0.12);
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* noise overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 1.25rem 5rem; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem 3.5rem;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 3rem;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: 500;
+    line-height: 1.18;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    color: var(--accent);
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 2.5rem; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* STEP CARDS */
+  .step-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .step-card:hover { border-color: var(--border-hover); }
+  .step-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 0.75rem;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 0.5px solid rgba(184,156,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 1px;
+  }
+  .step-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    padding-top: 3px;
+  }
+  .step-body {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    padding-left: 38px;
+  }
+  .step-body p { margin-bottom: 0.5rem; }
+  .step-body p:last-child { margin-bottom: 0; }
+  .step-body ol { padding-left: 1.2rem; }
+  .step-body li { margin-bottom: 0.35rem; }
+  .chip {
+    display: inline-block;
+    background: var(--accent-dim);
+    border: 0.5px solid rgba(184,156,255,0.25);
+    color: var(--accent);
+    border-radius: 6px;
+    padding: 2px 9px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* CALCULATOR */
+  .calc-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .calc-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+  }
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 14px;
+    pointer-events: none;
+  }
+  select {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    background: var(--surface-2);
+    border: 0.5px solid var(--border-hover);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  select option { background: #1e1829; }
+
+  /* RESULT */
+  .result-box {
+    display: none;
+    margin-top: 1.75rem;
+    border-top: 0.5px solid var(--border);
+    padding-top: 1.75rem;
+    animation: fadeUp 0.35s ease;
+  }
+  .result-box.visible { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-dim);
+    border: 0.5px solid rgba(184,156,255,0.25);
+    color: var(--accent);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .result-wound-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    line-height: 1.25;
+  }
+
+  .result-wound-sub {
+    font-size: 14px;
+    color: var(--accent);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 1.25rem;
+  }
+
+  .result-theme {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--accent-glow);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  .rblock { margin-bottom: 1.25rem; }
+  .rblock-title {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    margin-bottom: 0.6rem;
+  }
+  .rblock-body {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.4;
+  }
+  .tag-neg { background: var(--coral-dim); border: 0.5px solid rgba(244,144,122,0.25); color: var(--coral); }
+  .tag-key { background: var(--green-dim); border: 0.5px solid rgba(126,203,168,0.25); color: var(--green); }
+
+  .gift-block {
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--gold-dim);
+    border: 0.5px solid rgba(232,201,122,0.2);
+    border-radius: var(--radius-sm);
+  }
+  .gift-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+    font-weight: 500;
+  }
+  .gift-text {
+    font-size: 14px;
+    color: rgba(232,201,122,0.85);
+    line-height: 1.65;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  /* CTA */
+  .cta-section { display: none; margin-top: 3rem; }
+  .cta-section.visible { display: block; animation: fadeUp 0.4s ease; }
+
+  .cta-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border-hover);
+    border-radius: var(--radius);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(184,156,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+  .cta-body {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 420px;
+    margin: 0 auto 1.75rem;
+  }
+  .cta-divider {
+    width: 40px;
+    height: 0.5px;
+    background: var(--border-hover);
+    margin: 0 auto 1.25rem;
+  }
+  .cta-price-wrap { margin-bottom: 1.5rem; }
+  .cta-price-label { font-size: 12px; color: var(--text-dim); margin-bottom: 0.25rem; }
+  .cta-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+  }
+  .cta-price span { font-size: 22px; color: var(--text-muted); }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #0e0c14;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 14px 36px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+  .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .cta-btn:active { transform: translateY(0); }
+
+  .cta-note {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    border-top: 0.5px solid var(--border);
+    margin-top: 3rem;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 3rem 0.5rem 2.5rem; }
+    .calc-card { padding: 1.25rem; }
+    .cta-card { padding: 2rem 1.25rem; }
+    .step-body { padding-left: 0; margin-top: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="hero">
+    <p class="hero-eyebrow">✦ Астро-калькулятор</p>
+    <h1 class="hero-title">Хирон в натальной карте:<br><em>где живёт твоё «я недостаточна»</em></h1>
+    <p class="hero-sub">Узнай, в каком доме стоит твой Хирон — и как это напрямую блокирует деньги, проявленность и ощущение собственной ценности.</p>
+  </header>
+
+  <section class="section">
+    <p class="section-label">Шаг 1 — как найти Хирон</p>
+
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">1</span>
+        <p class="step-title">Открой astro.com или sotis.app</p>
+      </div>
+      <div class="step-body">
+        <p>Оба сервиса бесплатные. Sotis удобнее, если не хочется разбираться с английским интерфейсом.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">2</span>
+        <p class="step-title">Введи данные рождения</p>
+      </div>
+      <div class="step-body">
+        <p>Нужно: <span class="chip">дата</span> <span class="chip">время</span> <span class="chip">место рождения</span></p>
+        <p style="margin-top:0.6rem">Чем точнее время — тем точнее дома. Если не знаешь — ставь полдень, это лучше, чем ничего.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">3</span>
+        <p class="step-title">Найди символ Хирона на карте</p>
+      </div>
+      <div class="step-body">
+        <p>Хирон обозначается символом, похожим на ключ — буква K с чёрточкой снизу. На astro.com он отображается по умолчанию в разделе <em>Free Horoscopes → Extended Chart Selection → Natal chart</em>.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-num">4</span>
+        <p class="step-title">Определи дом через Sotis</p>
+      </div>
+      <div class="step-body">
+        <ol>
+          <li>Зайди на <strong>sotis.app</strong></li>
+          <li>Построй натальную карту</li>
+          <li>В списке планет найди строку <em>«Хирон»</em></li>
+          <li>Рядом будет указан знак и <strong>номер дома</strong> — например, «Хирон в Тельце, 2 дом»</li>
+          <li>Этот номер вводи в калькулятор ниже</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Шаг 2 — твой результат</p>
+
+    <div class="calc-card">
+      <p class="calc-label">В каком доме стоит твой Хирон?</p>
+      <div class="select-wrap">
+        <select id="houseSelect" onchange="showResult()">
+          <option value="">— Выбери дом —</option>
+          <option value="1">1 дом</option>
+          <option value="2">2 дом</option>
+          <option value="3">3 дом</option>
+          <option value="4">4 дом</option>
+          <option value="5">5 дом</option>
+          <option value="6">6 дом</option>
+          <option value="7">7 дом</option>
+          <option value="8">8 дом</option>
+          <option value="9">9 дом</option>
+          <option value="10">10 дом</option>
+          <option value="11">11 дом</option>
+          <option value="12">12 дом</option>
+        </select>
+      </div>
+
+      <div class="result-box" id="resultBox">
+        <div id="resultContent"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="ctaSection">
+    <div class="cta-card">
+      <p class="cta-eyebrow">✦ Хочешь глубже?</p>
+      <h2 class="cta-title">Разбор «Кто ты на самом деле»</h2>
+      <div class="cta-divider"></div>
+      <p class="cta-body">Хирон — это только один слой. В личном разборе я смотрю всю карту, таро и ПВС-состояния вместе. Ты уходишь не с предсказанием — а с пониманием, что именно тормозит, и что с этим делать прямо сейчас.</p>
+      <div class="cta-price-wrap">
+        <p class="cta-price-label">стоимость</p>
+        <p class="cta-price">888 <span>₽</span></p>
+      </div>
+      <a class="cta-btn" href="https://payform.ru/mobHg7c/" target="_blank" rel="noopener">Записаться и оплатить →</a>
+      <p class="cta-note">После оплаты я свяжусь с тобой в течение 24 часов</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Евгения — астролог, таролог, интегратор ПВС</p>
+  </footer>
+
+</div>
+
+<script>
+const data = {
+  1: {
+    title: "Хирон в 1 доме",
+    wound: "Рана «я не такая»",
+    theme: "1 дом — это личность, тело, самопроявление, первое впечатление. Боль здесь — ощущение, что с тобой что-то не так от рождения. Что нужно сначала стать лучше — и только потом можно выходить.",
+    minus: ["Страх быть видимой","Постоянное сравнение себя","Болезненная реакция на критику","Стыд за тело, голос, внешность","Откладываешь запуски «до идеальной версии»"],
+    money: "Деньги блокируются через страх проявленности. Можешь быть сильным специалистом, но не выходить в сторис, не показывать лицо, не продавать — ждать, пока станешь идеальной.",
+    key: ["Говорить в камеру маленькими шагами","Публиковать живые неидеальные мысли","Разрешить себе быть заметной уже сейчас"],
+    gift: "Помогаешь другим принять себя, выйти из стыда и перестать жить в режиме «со мной что-то не так»."
+  },
+  2: {
+    title: "Хирон в 2 доме",
+    wound: "Рана самоценности и права иметь",
+    theme: "2 дом — деньги, ресурсы, ощущение собственной ценности. Одно из самых прямых положений Хирона для финансовой темы. Внутри живёт конфликт: «хочу больше — но мне страшно иметь больше».",
+    minus: ["Занижаешь цену на услуги","Боишься брать оплату","Чувство вины за деньги и покупки","Финансовая нестабильность — рывками","Ощущение «я недостойна хорошего»"],
+    money: "Можешь много работать, но плохо принимать результат. Зарабатываешь — и тут же находишь способ это потерять или обесценить.",
+    key: ["Учиться называть свою цену","Вести учёт денег без стыда","Разрешать себе удовольствие без самонаказания"],
+    gift: "Становишься проводником в теме самоценности, финансового взросления и права на достаток."
+  },
+  3: {
+    title: "Хирон в 3 доме",
+    wound: "Рана голоса и мышления",
+    theme: "3 дом — речь, тексты, общение, обучение. Боль здесь — ощущение, что твои мысли неважны, что ты говоришь глупо, что тебя не слышат. И поэтому проще молчать.",
+    minus: ["Страх писать и говорить публично","Много мыслей — мало публикаций","Обесцениваешь свои идеи","Болезненно воспринимаешь комментарии","Ждёшь идеальной формулировки"],
+    money: "Деньги блокируются через коммуникацию. Знаешь много — но молчишь. Особенно больно, если продаёшь через блог, консультации, тексты, переговоры.",
+    key: ["Писать регулярно — живо, не идеально","Говорить простыми словами","Делать контент через личный опыт"],
+    gift: "Способность объяснять сложное простым языком и слышать между строк — то, за что люди платят."
+  },
+  4: {
+    title: "Хирон в 4 доме",
+    wound: "Рана корней и внутренней опоры",
+    theme: "4 дом — семья, детство, внутренний фундамент, ощущение безопасности. Боль здесь — отсутствие настоящей опоры изнутри, даже если снаружи всё нормально.",
+    minus: ["Болезненная связь с родом","Страх создавать свою стабильность","Чувство сиротства даже при живой семье","Отсутствие внутреннего покоя","Повторяешь семейный сценарий бедности"],
+    money: "Деньги блокируются через отсутствие внутренней опоры. Можешь не чувствовать права на своё жильё, стабильность, спокойную жизнь — потому что в семейном сценарии этого не было.",
+    key: ["Отделяться от родительских сценариев","Создавать свой дом — внешний и внутренний","Перестать доказывать семье свою ценность"],
+    gift: "Помогаешь другим создавать опору, исцелять родовые сценарии и строить дом внутри себя."
+  },
+  5: {
+    title: "Хирон в 5 доме",
+    wound: "Рана радости и права сиять",
+    theme: "5 дом — творчество, самовыражение, удовольствие, яркость, сцена. Боль здесь — ощущение, что мне нельзя быть заметной, что мои таланты не серьёзные, что если выйду — высмеют.",
+    minus: ["Страх сцены и публичности","Блок в творчестве","Стыд за свои желания","Не умеешь отдыхать без чувства вины","Сравниваешь себя с более яркими"],
+    money: "Можешь не монетизировать свой талант, потому что «это несерьёзно», «кому это нужно», «я недостаточно яркая». Деньги блокируются через стыд за собственное проявление.",
+    key: ["Возвращать радость без пользы","Разрешить себе быть заметной","Создавать продукты через свою живость"],
+    gift: "Зажигаешь других, раскрываешь таланты, возвращаешь людям вкус к жизни."
+  },
+  6: {
+    title: "Хирон в 6 доме",
+    wound: "Рана полезности и служения",
+    theme: "6 дом — работа, обязанности, здоровье, служение. Боль здесь — ощущение «если я не помогаю, я не нужна». Отдых надо заслужить. Ценность = количество труда.",
+    minus: ["Переработки и хроническое выгорание","Перфекционизм в работе","Даёшь больше, чем оплачено","Тревога из-за здоровья","Жизнь по принципу «сначала дела, потом я»"],
+    money: "Можешь много зарабатывать через труд — но брать мало, работать слишком много, быть незаметным исполнителем. Путаешь ценность с полезностью.",
+    key: ["Брать оплату за результат, а не за страдание","Нормализовать отдых без вины","Делегировать и выстраивать систему"],
+    gift: "Помогаешь другим выстраивать систему, здоровье, рабочие процессы и бережную дисциплину."
+  },
+  7: {
+    title: "Хирон в 7 доме",
+    wound: "Рана отношений и близости",
+    theme: "7 дом — партнёр, клиенты, союзы, договорённости. Боль здесь — в отношениях я теряю себя, меня не выбирают, близость небезопасна.",
+    minus: ["Болезненные повторяющиеся сценарии","Страх продавать лично","Теряешься рядом с другим человеком","Не умеешь выдерживать претензии клиентов","Избегаешь переговоров"],
+    money: "Деньги могут идти через клиентов и партнёрства — но рана блокирует: боишься клиентов, сливаешься с партнёром, выбираешь небезопасные союзы.",
+    key: ["Учиться выбирать, а не только быть выбранной","Выстраивать границы в работе и отношениях","Учиться честным договорённостям"],
+    gift: "Становишься сильным проводником в теме отношений, выбора партнёра и переговоров."
+  },
+  8: {
+    title: "Хирон в 8 доме",
+    wound: "Рана доверия и чужих ресурсов",
+    theme: "8 дом — чужие деньги, кредиты, долги, трансформация, глубинные страхи. Боль здесь — доверять опасно, если приму помощь — буду должна, близость ведёт к потере контроля.",
+    minus: ["Страх финансовой зависимости","Сложности принимать деньги от партнёра","Долги и финансовые кризисы","Гиперконтроль","Хочу поддержку — но боюсь зависимости"],
+    money: "Деньги связаны с болью или зависимостью. Может быть история с долгами, кредитами, партнёрскими финансами. Глубокий страх потерять контроль через деньги.",
+    key: ["Учиться финансовой прозрачности","Работать со страхом зависимости","Разбирать долги и обязательства методично"],
+    gift: "Помогаешь другим проходить кризисы и работать с глубинными страхами и трансформацией."
+  },
+  9: {
+    title: "Хирон в 9 доме",
+    wound: "Рана права учить",
+    theme: "9 дом — образование, вера, наставничество, экспертность. Боль здесь — я недостаточно знаю, я не имею права учить, надо пройти ещё один курс — и вот тогда.",
+    minus: ["Синдром вечного ученика","Страх преподавать","Метания между системами знаний","Ощущение «настоящие эксперты — где-то там»","Конфликты с учителями"],
+    money: "Можешь зарабатывать через обучение, наставничество, консультации — но рана блокирует: «я ещё не готова, надо ещё поучиться».",
+    key: ["Формировать свою систему знаний","Начать делиться на своём уровне прямо сейчас","Признать право на собственную философию"],
+    gift: "Становишься наставником и проводником смыслов — человеком, расширяющим картину мира других."
+  },
+  10: {
+    title: "Хирон в 10 доме",
+    wound: "Рана статуса и признания",
+    theme: "10 дом — карьера, статус, амбиции, публичный результат, личный бренд. Боль здесь — я не достигла достаточно, я не имею права быть авторитетом, я боюсь успеха.",
+    minus: ["Страх публичного успеха","Болезненное сравнение с другими экспертами","Зависимость от признания","Ощущение «я никто»","Хочешь высокий чек — но не чувствуешь статуса"],
+    money: "Очень сильно влияет на доход через личный бренд. Хочешь больше — но прячешься. Хочешь признания — но не разрешаешь себе занять место эксперта.",
+    key: ["Строить авторитет через реальные кейсы","Выходить в публичность без ожидания разрешения","Отделить личную ценность от карьерных достижений"],
+    gift: "Помогаешь другим находить профессию, строить статус и выходить в публичность."
+  },
+  11: {
+    title: "Хирон в 11 доме",
+    wound: "Рана принадлежности и аудитории",
+    theme: "11 дом — друзья, сообщества, аудитория, мечты, большие проекты. Боль здесь — я чужая в коллективе, меня не принимают, я не вписываюсь, боюсь аудитории.",
+    minus: ["Одиночество среди людей","Болезненная зависимость от мнения аудитории","Страх создавать клуб или комьюнити","Сложность с дружбой","Ощущение «я не из их круга»"],
+    money: "Деньги блокируются через блог, аудиторию, групповые продукты, нетворкинг. Хочешь масштаб — но боишься людей.",
+    key: ["Искать не всех, а своих","Проявляться в сообществах через честность","Отделять критику толпы от реальной обратной связи"],
+    gift: "Умеешь собирать людей, создавать сообщества и объединять тех, кто тоже чувствовал себя чужим."
+  },
+  12: {
+    title: "Хирон в 12 доме",
+    wound: "Рана невидимости и жертвенности",
+    theme: "12 дом — подсознание, изоляция, духовная чувствительность, тайная боль. Боль здесь — я одна со своей болью, меня никто по-настоящему не понимает, мне нельзя хотеть для себя.",
+    minus: ["Много помогаешь бесплатно","Боишься заявить о своей цене","Жертвенность без осознания","Чувство вины без видимой причины","Не понимаешь, куда уходит энергия"],
+    money: "Деньги блокируются через невидимость и жертвенность. Прячешься, живёшь чужими проблемами, боишься хотеть для себя. Сильное положение — но сначала нужно выйти из роли спасателя.",
+    key: ["Выходить из роли спасателя","Учиться быть видимой","Не путать духовность и отказ от материального"],
+    gift: "Одно из сильнейших положений для работы с подсознанием, глубинными состояниями, снами и родом."
+  }
+};
+
+function showResult() {
+  const v = document.getElementById('houseSelect').value;
+  const box = document.getElementById('resultBox');
+  const content = document.getElementById('resultContent');
+  const cta = document.getElementById('ctaSection');
+
+  if (!v) {
+    box.classList.remove('visible');
+    cta.classList.remove('visible');
+    return;
+  }
+
+  const d = data[v];
+
+  const minusTags = d.minus.map(m => `<span class="tag tag-neg">${m}</span>`).join('');
+  const keyTags = d.key.map(k => `<span class="tag tag-key">${k}</span>`).join('');
+
+  content.innerHTML = `
+    <div class="result-badge">✦ ${d.title}</div>
+    <h2 class="result-wound-title">${d.wound}</h2>
+    <p class="result-wound-sub">${d.title.split(' ').slice(2).join(' ')}</p>
+    <div class="result-theme">${d.theme}</div>
+
+    <div class="rblock">
+      <p class="rblock-title">Как это проявляется</p>
+      <div class="tags">${minusTags}</div>
+    </div>
+
+    <div class="rblock">
+      <p class="rblock-title">Связь с деньгами</p>
+      <p class="rblock-body">${d.money}</p>
+    </div>
+
+    <div class="rblock">
+      <p class="rblock-title">Ключи к исцелению</p>
+      <div class="tags">${keyTags}</div>
+    </div>
+
+    <div class="gift-block">
+      <p class="gift-label">✦ Твой дар</p>
+      <p class="gift-text">${d.gift}</p>
+    </div>
+  `;
+
+  box.classList.remove('visible');
+  void box.offsetWidth;
+  box.classList.add('visible');
+
+  cta.classList.remove('visible');
+  void cta.offsetWidth;
+  cta.classList.add('visible');
+}
+</script>
+
+</body>
+</html>
